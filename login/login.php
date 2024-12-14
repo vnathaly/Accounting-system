@@ -24,6 +24,9 @@
          <form method="post" action="">
             <img src="img/avatar.svg">
             <h2 class="title">BIENVENIDO</h2>
+            <?php
+            include "controlador/controlador_login.php";
+            ?>
             <div class="input-div one">
                <div class="i">
                   <i class="fas fa-user"></i>
