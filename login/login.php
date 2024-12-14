@@ -25,6 +25,7 @@
             <img src="img/avatar.svg">
             <h2 class="title">BIENVENIDO</h2>
             <?php
+            include "controlador/conexion.php";
             include "controlador/controlador_login.php";
             ?>
             <div class="input-div one">
@@ -47,11 +48,6 @@
             </div>
             <div class="view">
                <div class="fas fa-eye verPassword" onclick="vista()" id="verPassword"></div>
-            </div>
-
-            <div class="text-center">
-               <a class="font-italic isai5" href="">Olvidé mi contraseña</a>
-               <a class="font-italic isai5" href="">Registrarse</a>
             </div>
             <input name="btningresar" class="btn" type="submit" value="INICIAR SESION">
          </form>

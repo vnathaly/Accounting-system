@@ -1,3 +1,11 @@
+<?php
+session_start();
+
+if (empty($_SESSION["ID"])) {
+    header("location: login.php");
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -50,7 +58,9 @@
 
 	<nav class="navbar navbar-dark bg-dark  navbar-expand-md navbar-light bg-light fixed-top">
 		<div class="text-white bg-success p-2">
-			NOMBRE Y APELLIDO DEL USUARIO
+			<?php
+       echo $_SESSION["nombre"]." ".$_SESSION["apellido"];
+			?>
 		</div>
 		<div class="collapse navbar-collapse" id="navbarTogglerDemo01">
 			<div class="navbar-nav mr-auto">
@@ -67,7 +77,7 @@
 						<a class="dropdown-item" href="servicios.html">Otros</a>
 					</div>
 				</li>
-				<a class="nav-item nav-link text-justify ml-3 hover-primary" href="">Salir</a>
+				<a class="nav-item nav-link text-justify ml-3 hover-primary" href="controlador/controlador_cerrar_seccion.php">Salir</a>
 			</div>
 			<div class="text-center justify-content-center">
 				<a class="btn btn-outline-primary" target="_blank" href="https://www.facebook.com">Facebook</a>
