@@ -4209,6 +4209,14 @@ input[type="button"].btn-block {
   padding-bottom: 0.5rem;
 }
 
+.navbar-nav .nav-item:last-child {
+  margin-right: 60px;
+}
+
+.hover-primary:hover {
+  color: #007bff;
+}
+
 .navbar-collapse {
   -ms-flex-preferred-size: 100%;
   flex-basis: 100%;

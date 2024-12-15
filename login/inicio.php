@@ -1,6 +1,5 @@
 <?php
 session_start();
-
 if (empty($_SESSION["ID"])) {
     header("location: login.php");
 }
@@ -11,7 +10,7 @@ if (empty($_SESSION["ID"])) {
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
-	<link rel="stylesheet" href="css/estilo.css">
+	<link rel="stylesheet" href="css/estilo.css">	
 	<link rel="stylesheet" href="css/bootstrap.css">
 </head>
 <body>
@@ -63,27 +62,54 @@ if (empty($_SESSION["ID"])) {
 			?>
 		</div>
 		<div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-			<div class="navbar-nav mr-auto">
-				<div class="offset-md-1 mr-auto text-center"></div>
-				<a class="nav-item nav-link text-justify active ml-3 hover-primary" href="#">Inicio</a>
-				<a class="nav-item nav-link text-justify ml-3 hover-primary" href="#">Nosotros</a>
-				<li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle text-justify ml-3" href="" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						Servicios
-					</a>
-					<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-						<a class="dropdown-item" href="#">Preguntas Frecuentes</a>
-						<a class="dropdown-item" href="#">Compras</a>
-						<a class="dropdown-item" href="servicios.html">Otros</a>
-					</div>
-				</li>
-				<a class="nav-item nav-link text-justify ml-3 hover-primary" href="controlador/controlador_cerrar_seccion.php">Salir</a>
-			</div>
-			<div class="text-center justify-content-center">
-				<a class="btn btn-outline-primary" target="_blank" href="https://www.facebook.com">Facebook</a>
-				<a class="btn btn-outline-danger" target="_blank" href="https://www.youtube.com">Youtube</a>
-			</div>
-		</div>
+    <div class="navbar-nav ml-auto">
+        <div class="offset-md-1 text-center"></div>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle text-justify ml-3" href="" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Mantenimientos
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="#">Usuarios</a>
+                <a class="dropdown-item" href="#">Catálogo de cuenta</a>
+                <a class="dropdown-item" href="servicios.html">Tipo Entrada de Diario</a>
+            </div>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle text-justify ml-3" href="" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Consultas
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="#">Catálogo de cuenta</a>
+                <a class="dropdown-item" href="#">Transacciones por Fecha</a>
+                <a class="dropdown-item" href="servicios.html">Transacciones por rango de fechas</a>
+                <a class="dropdown-item" href="#">Transacciones por Documento</a>
+                <a class="dropdown-item" href="#">Transacciones por Tipo de Documento</a>
+                <a class="dropdown-item" href="servicios.html">Balanza General (Activos, pasivo y Capital)</a>
+                <a class="dropdown-item" href="#">Balanza de Comprobación</a>
+                <a class="dropdown-item" href="#">Resumen de Gastos Generales</a>
+                <a class="dropdown-item" href="servicios.html">Estado de Ganancias y Pérdidas</a>
+            </div>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle text-justify ml-3" href="" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Movimiento
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="#"> Transacciones</a>
+            </div>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle text-justify ml-3" href="" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Procesos
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="#">Cierre de Diario por fechas</a>
+                <a class="dropdown-item" href="#">Cierre de fin de año fiscal por fecha año Fiscal</a>
+            </div>
+        </li>
+        <a class="nav-item nav-link text-justify ml-3 hover-primary" href="controlador_cerrar_seccion.php">Salir</a>
+    </div>
+</div>
 
 	</nav>
 	<div class="">
