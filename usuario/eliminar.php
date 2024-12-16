@@ -12,7 +12,7 @@ if (isset($_GET['id'])) {
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $sql_delete = "DELETE FROM usuario WHERE ID = $idUsuario";
             if ($conexion->query($sql_delete) === TRUE) {
-                header("Location: cliente.php?msg=Usuario eliminado exitosamente");
+                header("Location: usuario.php?msg=Usuario eliminado exitosamente");
                 exit();
             } else {
                 echo "<div class='alert alert-danger' role='alert'>Error: " . $conexion->error . "</div>";
@@ -42,7 +42,7 @@ if (isset($_GET['id'])) {
         <p>¿Estás seguro de que deseas eliminar este usuario?</p>
         <form action="eliminar.php?id=<?php echo htmlspecialchars($idUsuario); ?>" method="post">
             <button type="submit" class="btn btn-danger">Eliminar</button>
-            <a href="cliente.php" class="btn btn-secondary">Cancelar</a>
+            <a href="usuario.php" class="btn btn-secondary">Cancelar</a>
         </form>
     </div>
 </body>

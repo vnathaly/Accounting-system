@@ -1,11 +1,8 @@
 <?php
-
 include_once "conexion.php"; 
 
-// Obtener el término de búsqueda
 $searchTerm = isset($_GET['search']) ? $_GET['search'] : '';
 
-// Obtener la lista de usuarios con la opción de búsqueda
 $sql = "SELECT * FROM usuario WHERE nombre LIKE ? OR apellidos_usuarios LIKE ?";
 $stmt = $conexion->prepare($sql);
 $searchParam = "%$searchTerm%";
@@ -17,15 +14,26 @@ if ($result === FALSE) {
     die("Error en la consulta: " . $conexion->error);
 }
 
-$isDirectAccess = basename($_SERVER['PHP_SELF']) == basename(__FILE__);
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['usuario'])) {
+    $usuario = $_POST['usuario'];
+    $clave = password_hash($_POST['clave'], PASSWORD_BCRYPT); // Cifrado de clave
+    $nivel_acceso = $_POST['nivel_acceso'];
+    $nombre = $_POST['nombre'];
+    $apellidos_usuarios = $_POST['apellidos_usuarios'];
+    $email_usuario = $_POST['email_usuario'];
 
-// session_start();
-// if (!isset($_SESSION['usuario'])) {
-//     header('Location: ../login/login.php');
-//     exit;
-// }
+    $sqlInsert = "INSERT INTO usuario (usuario, clave, nivel_acceso, nombre, apellidos_usuarios, email_usuario) 
+                  VALUES (?, ?, ?, ?, ?, ?)";
+    $stmtInsert = $conexion->prepare($sqlInsert);
+    $stmtInsert->bind_param('ssiiss', $usuario, $clave, $nivel_acceso, $nombre, $apellidos_usuarios, $email_usuario);
 
-$loggedInUser = $_SESSION['usuario'];
+    if ($stmtInsert->execute()) {
+        echo "<script>alert('Usuario agregado exitosamente.');</script>";
+        echo "<script>window.location.href = 'usuario.php';</script>";
+    } else {
+        echo "<script>alert('Error al agregar usuario.');</script>";
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -116,24 +124,40 @@ $loggedInUser = $_SESSION['usuario'];
                     </button>
                 </div>
                 <div class="modal-body">
-                    <!-- Contenido del formulario para agregar usuario -->
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal para editar usuario -->
-    <div class="modal fade" id="editUserModal" tabindex="-1" role="dialog" aria-labelledby="editUserModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="editUserModalLabel">Editar Usuario</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <!-- Contenido del formulario para editar usuario -->
+                    <form method="POST" action="" class="insert-form">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="usuario">Usuario:</label>
+                                    <input type="text" class="form-control" id="usuario" name="usuario" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="clave">Clave:</label>
+                                    <input type="password" class="form-control" id="clave" name="clave" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="nivel_acceso">Nivel de Acceso:</label>
+                                    <input type="number" class="form-control" id="nivel_acceso" name="nivel_acceso" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="nombre">Nombre:</label>
+                                    <input type="text" class="form-control" id="nombre" name="nombre" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="apellidos_usuarios">Apellidos:</label>
+                                    <input type="text" class="form-control" id="apellidos_usuarios" name="apellidos_usuarios" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email_usuario">Email:</label>
+                                    <input type="email" class="form-control" id="email_usuario" name="email_usuario">
+                                </div>
+                                <button type="submit" class="btn btn-primary">Guardar</button>
+                                <a href="usuario.php" class="btn btn-secondary">Cancelar</a>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
