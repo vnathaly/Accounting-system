@@ -11,7 +11,7 @@ if (!empty($_POST["btningresar"])) {
         if ($datos = $sql->fetch_object()) {
             $_SESSION["ID"]=$datos->ID;
             $_SESSION["nombre"]=$datos->nombre;
-            $_SESSION["apellido"]=$datos->apellido;
+            $_SESSION["apellidos_usuarios"]=$datos->apellidos_usuarios;
             header("location: ./inicio.php");
         } else {
             echo "<div class='alert alert-danger'>Acceso Denegado</div>";

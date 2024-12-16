@@ -26,6 +26,10 @@ if (empty($_SESSION["ID"])) {
 					<img src="img/1.jpg" class="d-block w-100" alt="...">
 					<div class="carousel-caption d-none d-md-block">
 						<h5 class="display-4 mb-4 font-weight-bold">BOOTSTRAP 4</h5>
+						<div id="contenido" class="container mt-5 pt-5">
+               <!-- Aquí se cargarán los mantenimientos -->
+					     <p>Aquí van los mantenimientos</p>
+             </div>
 						<p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
 					</div>
 				</div>
@@ -54,26 +58,25 @@ if (empty($_SESSION["ID"])) {
 			</a>
 		</div>
 	</div>
-
 	<nav class="navbar navbar-dark bg-dark  navbar-expand-md navbar-light bg-light fixed-top">
 		<div class="text-white bg-success p-2">
 			<?php
-       echo $_SESSION["nombre"]." ".$_SESSION["apellido"];
+       echo $_SESSION["nombre"]." ".$_SESSION["apellidos_usuarios"];
 			?>
 		</div>
 		<div class="collapse navbar-collapse" id="navbarTogglerDemo01">
     <div class="navbar-nav ml-auto">
         <div class="offset-md-1 text-center"></div>
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle text-justify ml-3" href="" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Mantenimientos
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item" href="#">Usuarios</a>
-                <a class="dropdown-item" href="#">Catálogo de cuenta</a>
-                <a class="dropdown-item" href="servicios.html">Tipo Entrada de Diario</a>
-            </div>
-        </li>
+				<li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle text-justify ml-3" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Mantenimientos
+    </a>
+    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+        <a class="dropdown-item" href="#" onclick="cargarMantenimiento('usuarios')">Usuarios</a>
+        <a class="dropdown-item" href="#" onclick="cargarMantenimiento('catalogo')">Catálogo de cuenta</a>
+        <a class="dropdown-item" href="#" onclick="cargarMantenimiento('tipo_entrada')">Tipo Entrada de Diario</a>
+    </div>
+    </li>
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle text-justify ml-3" href="" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Consultas
@@ -90,6 +93,14 @@ if (empty($_SESSION["ID"])) {
                 <a class="dropdown-item" href="servicios.html">Estado de Ganancias y Pérdidas</a>
             </div>
         </li>
+				<li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle text-justify ml-3" href="" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Procesos
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="#">Cierre de Diario por fechas</a>
+            </div>
+        </li>
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle text-justify ml-3" href="" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Movimiento
@@ -98,20 +109,10 @@ if (empty($_SESSION["ID"])) {
                 <a class="dropdown-item" href="#"> Transacciones</a>
             </div>
         </li>
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle text-justify ml-3" href="" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Procesos
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item" href="#">Cierre de Diario por fechas</a>
-                <a class="dropdown-item" href="#">Cierre de fin de año fiscal por fecha año Fiscal</a>
-            </div>
-        </li>
         <a class="nav-item nav-link text-justify ml-3 hover-primary" href="controlador_cerrar_seccion.php">Salir</a>
     </div>
-</div>
-
-	</nav>
+		</div>
+	</nav>	
 	<div class="">
 		<div class="jumbotron bg-dark text-light rounded-0">
 			<h1 class="display-4">Hello, world!</h1>
@@ -119,27 +120,10 @@ if (empty($_SESSION["ID"])) {
 			<hr class="my-4 bg-light">
 			<div class="d-flex justify-content-between align-items-center flex-wrap">
 				<p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-				<a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
 			</div>
 		</div>
 	</div>
-
-	<form action="" class="form-inline d-flex justify-content-center flex-column flex-md-row">
-		<div class="form-group mx-2 my-2">
-			<label class="d-none d-md-block" for="">Nombre</label>
-			<input type="text" class="form-control" placeholder="Nombre">
-		</div>
-		<div class="form-group mx-2 my-2">
-			<label class="d-none d-md-block" for="">Apellido</label>
-			<input type="text" class="form-control" placeholder="Apellido">
-		</div>
-		<div class="form-group mx-2 my-2">
-			<button class="btn btn-outline-primary">enviar</button>
-		</div>
 	</form>
-
-
-
 	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis aperiam molestias, sint totam dolorum laudantium deleniti obcaecati minima odio provident, optio consectetur quas velit est amet a facere accusantium necessitatibus ea, officiis? Obcaecati harum eligendi incidunt ipsam alias maiores accusamus dicta quia velit molestias, placeat ullam vel corporis explicabo. Porro minus facere quos illum tenetur odit temporibus voluptate a perferendis magni dolorum laudantium molestiae veniam mollitia, illo harum unde, error repellat rem repellendus in, earum ipsum sequi! Explicabo delectus ipsum maxime id vitae, quod necessitatibus voluptates magnam blanditiis et rem enim at voluptatem quisquam inventore est, voluptate aut animi modi consectetur reiciendis molestias ullam repellat sapiente. Vel cupiditate ipsum delectus quod voluptatibus, consectetur omnis numquam ipsa tempora culpa eligendi officiis! Neque explicabo eos fugiat nisi, tenetur modi optio, dolore placeat molestias iste odit, velit rerum aperiam nihil laborum suscipit molestiae. Assumenda cumque, molestiae sed aliquid corrupti praesentium possimus soluta ex delectus est, debitis hic voluptatem natus labore nulla suscipit reprehenderit dignissimos ipsa quae doloribus eum, aperiam totam iure temporibus doloremque. Nesciunt quibusdam aut, vitae ipsam saepe deserunt eius amet alias natus facere asperiores laudantium, cumque temporibus sunt perferendis dolore ducimus velit soluta modi repellat autem eligendi omnis dolorem! Excepturi, iusto.</p>
 
 
