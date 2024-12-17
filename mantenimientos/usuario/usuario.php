@@ -16,7 +16,7 @@ if ($result === FALSE) {
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['usuario'])) {
     $usuario = $_POST['usuario'];
-    $clave = password_hash($_POST['clave'], PASSWORD_BCRYPT); // Cifrado de clave
+    $clave = password_hash($_POST['clave'], PASSWORD_DEFAULT); // Cifrado de clave
     $nivel_acceso = $_POST['nivel_acceso'];
     $nombre = $_POST['nombre'];
     $apellidos_usuarios = $_POST['apellidos_usuarios'];
@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['usuario'])) {
     $stmtInsert->bind_param('ssiiss', $usuario, $clave, $nivel_acceso, $nombre, $apellidos_usuarios, $email_usuario);
 
     if ($stmtInsert->execute()) {
-        echo "<script>alert('Usuario agregado exitosamente.');</script>";
+        echo "<script>alert('Usuario agregado exitosamente." . $_POST['clave'] ." hhh');</script>";
         echo "<script>window.location.href = 'usuario.php';</script>";
     } else {
         echo "<script>alert('Error al agregar usuario.');</script>";
