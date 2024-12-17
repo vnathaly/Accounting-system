@@ -3,7 +3,7 @@ include_once '../conexion.php';
 
 $searchTerm = isset($_GET['search']) ? $_GET['search'] : '';
 
-$sql = "SELECT * FROM cabecera_transaccion_contable WHERE nro_docu LIKE ? OR fecha_docu LIKE ? ";
+$sql = "SELECT * FROM catalogo_cuenta_contable WHERE nro_cta LIKE ? OR descripcion_cta LIKE ? ";
 $stmt = $conexion->prepare($sql);
 $searchParam = "%$searchTerm%";
 $stmt->bind_param('ss', $searchParam, $searchParam);
@@ -25,7 +25,7 @@ if ($result === FALSE) {
 </head>
 <body>
 <div class="container mt-5">
-    <h1 class="text-center mb-4">Consulta de Transacciones</h1>
+    <h1 class="text-center mb-4">Consulta De Catalogo De Actas</h1>
 
     <!-- Formulario de búsqueda -->
     <form method="GET" action="" class="form-inline mb-3 justify-content-end">
@@ -37,25 +37,27 @@ if ($result === FALSE) {
     <table class="table table-bordered">
         <thead>
             <tr>
-                <th>Nro_doc</th>
-                <th>Tipo Entrada</th>
-                <th>Fecha</th>
-                <th>Tipo Documento</th>
-                <th>Descripción</th>
-                <th>Monto</th>
-                <th>Actualización</th>
+                <th>Nro_cta</th>
+                <th>Descripcion_cta</th>
+                <th>Tipo_cta</th>
+                <th>Nivel_cta</th>
+                <th>Fecha_creacion_cta</th>
+                <th>Debito_acum_cta</th>
+                <th>Credito_acum_cta</th>
+                <th>Balance_cta</th>
             </tr>
         </thead>
         <tbody>
             <?php while ($row = $result->fetch_assoc()): ?>
                 <tr>
-                    <td><?php echo htmlspecialchars($row['nro_docu']); ?></td>
-                    <td><?php echo htmlspecialchars($row['tipo_entrada']); ?></td>
-                    <td><?php echo htmlspecialchars($row['fecha_docu']); ?></td>
-                    <td><?php echo htmlspecialchars($row['tipo_docu']); ?></td>
-                    <td><?php echo htmlspecialchars($row['descripcion_docu']); ?></td>
-                    <td><?php echo htmlspecialchars($row['monto_transaccion']); ?></td>
-                    <td><?php echo htmlspecialchars($row['fecha_actualizacion']); ?></td>
+                    <td><?php echo htmlspecialchars($row['nro_cta']); ?></td>
+                    <td><?php echo htmlspecialchars($row['descripcion_cta']); ?></td>
+                    <td><?php echo htmlspecialchars($row['tipo_cta']); ?></td>
+                    <td><?php echo htmlspecialchars($row['nivel_cta']); ?></td>
+                    <td><?php echo htmlspecialchars($row['fecha_creacion_cta']); ?></td>
+                    <td><?php echo htmlspecialchars($row['debito_acum_cta']); ?></td>
+                    <td><?php echo htmlspecialchars($row['credito_acum_cta']); ?></td>
+                    <td><?php echo htmlspecialchars($row['balance_cta']); ?></td>
                 </tr>
             <?php endwhile; ?>
         </tbody>

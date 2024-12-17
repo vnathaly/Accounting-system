@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['usuario'])) {
     $sqlInsert = "INSERT INTO usuario (usuario, clave, nivel_acceso, nombre, apellidos_usuarios, email_usuario) 
                   VALUES (?, ?, ?, ?, ?, ?)";
     $stmtInsert = $conexion->prepare($sqlInsert);
-    $stmtInsert->bind_param('ssiiss', $usuario, $clave, $nivel_acceso, $nombre, $apellidos_usuarios, $email_usuario);
+    $stmtInsert->bind_param('ssdsss', $usuario, $clave, $nivel_acceso, $nombre, $apellidos_usuarios, $email_usuario);
 
     if ($stmtInsert->execute()) {
         echo "<script>alert('Usuario agregado exitosamente." . $_POST['clave'] ." hhh');</script>";
@@ -95,7 +95,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['usuario'])) {
                             <tr>
                                 <td><?php echo htmlspecialchars($row['ID']); ?></td>
                                 <td><?php echo htmlspecialchars($row['usuario']); ?></td>
-                                <td><?php echo htmlspecialchars($row['nivel_acceso']); ?></td>
+                                <td><?php echo htmlspecialchars($row['nivel_acceso'] == 1 ? 'Admin' : 'Usuario'); ?></td>
                                 <td><?php echo htmlspecialchars($row['nombre']); ?></td>
                                 <td><?php echo htmlspecialchars($row['apellidos_usuarios']); ?></td>
                                 <td><?php echo htmlspecialchars($row['email_usuario']); ?></td>
@@ -107,8 +107,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['usuario'])) {
                                 data-nombre="<?php echo htmlspecialchars($row['nombre']); ?>"
                                 data-apellidos_usuarios="<?php echo htmlspecialchars($row['apellidos_usuarios']); ?>"
                                 data-email_usuario="<?php echo htmlspecialchars($row['email_usuario']); ?>"
-                                data-toggle="modal" 
-                                data-target="#editUserModal">
+                              >
                                 <i class="fa-solid fa-pen-to-square"></i></a>
                                 <a href="eliminar.php?id=<?php echo $row['ID']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('¿Estás seguro de que deseas eliminar este usuario?');"><i class="fa-solid fa-delete-left"></i></a>
                                 </td>

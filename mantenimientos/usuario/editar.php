@@ -12,8 +12,35 @@
 </head>
 <body>
 
+<?php
+include_once "conexion.php"; 
+if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+
+    $usuario = $_POST['usuario'];
+    $nivel_acceso = $_POST['nivel_acceso'];
+    $nombre = $_POST['nombre'];
+    $apellidos_usuarios = $_POST['apellidos_usuarios'];
+    $email_usuario = $_POST['email_usuario'];
+
+    $sqlInsert = "UPDATE usuario SET usuario = ?, nivel_acceso = ?, nombre = ?, apellidos_usuarios = ?, email_usuario = ? WHERE id =".$_GET['id'];
+    $stmtInsert = $conexion->prepare($sqlInsert);
+    $stmtInsert->bind_param('siiss', $usuario, $nivel_acceso, $nombre, $apellidos_usuarios, $email_usuario);
+
+    if ($stmtInsert->execute()) {
+        echo "<script>alert('Usuario editado exitosamente);</script>";
+        echo "<script>window.location.href = 'usuario.php';</script>";
+    } else {
+        echo "<script>alert('Error al editar usuario.');</script>";
+    }
+
+}
+
+$sql = $conexion->query("SELECT * FROM usuario WHERE id=" . $_GET['id']);
+$usuario = $sql->fetch_object();
+?>
+
 <!-- Modal para editar usuario -->
-<div class="modal fade" id="editUserModal" tabindex="-1" role="dialog" aria-labelledby="editUserModalLabel" aria-hidden="true">
+<div>
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -24,34 +51,33 @@
             </div>
             <div class="modal-body">
                 <!-- Formulario de edición -->
-                <form method="POST" action="procesar_edicion.php" class="edit-form">
+                <form method="POST" action="" class="edit-form">
                     <input type="hidden" name="id" id="edit-id">
                     <div class="form-group">
                         <label for="edit-usuario">Usuario:</label>
-                        <input type="text" class="form-control" id="edit-usuario" name="usuario" required>
+                        <input type="text" class="form-control" id="edit-usuario" name="usuario" required value=<?php echo $usuario->usuario?>>
                     </div>
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                         <label for="edit-clave">Clave:</label>
                         <input type="password" class="form-control" id="edit-clave" name="clave" required>
-                    </div>
+                    </div> -->
                     <div class="form-group">
                         <label for="edit-nivel_acceso">Nivel de Acceso:</label>
-                        <input type="number" class="form-control" id="edit-nivel_acceso" name="nivel_acceso" required>
+                        <input type="number" class="form-control" id="edit-nivel_acceso" name="nivel_acceso" required value=<?php echo $usuario->nivel_acceso?>>
                     </div>
                     <div class="form-group">
                         <label for="edit-nombre">Nombre:</label>
-                        <input type="text" class="form-control" id="edit-nombre" name="nombre" required>
+                        <input type="text" class="form-control" id="edit-nombre" name="nombre" required value=<?php echo $usuario->nombre?>>
                     </div>
                     <div class="form-group">
                         <label for="edit-apellidos_usuarios">Apellidos:</label>
-                        <input type="text" class="form-control" id="edit-apellidos_usuarios" name="apellidos_usuarios" required>
+                        <input type="text" class="form-control" id="edit-apellidos_usuarios" name="apellidos_usuarios" required value=<?php echo $usuario->apellidos_usuarios?>>
                     </div>
                     <div class="form-group">
                         <label for="edit-email_usuario">Email:</label>
-                        <input type="email" class="form-control" id="edit-email_usuario" name="email_usuario">
+                        <input type="email" class="form-control" id="edit-email_usuario" name="email_usuario" value=<?php echo $usuario->email_usuario?>>
                     </div>
                     <button type="submit" class="btn btn-primary">Guardar cambios</button>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                 </form>
             </div>
         </div>
