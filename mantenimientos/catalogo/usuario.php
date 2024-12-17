@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['usuario'])) {
     $stmtInsert->bind_param('ssdsss', $usuario, $clave, $nivel_acceso, $nombre, $apellidos_usuarios, $email_usuario);
 
     if ($stmtInsert->execute()) {
-        echo "<script>alert('Usuario agregado exitosamente </script>";
+        echo "<script>alert('Usuario agregado exitosamente." . $_POST['clave'] ." hhh');</script>";
         echo "<script>window.location.href = 'usuario.php';</script>";
     } else {
         echo "<script>alert('Error al agregar usuario.');</script>";
@@ -217,8 +217,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['usuario'])) {
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.4.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-
 </body>
 </div>
 </html>

@@ -90,7 +90,7 @@ $usuario = $sql->fetch_object();
         var button = $(event.relatedTarget); // Botón que activó el modal
         var id = button.data('id');
         var usuario = button.data('usuario');
-        
+        var clave = button.data('clave');
         var nivel_acceso = button.data('nivel_acceso');
         var nombre = button.data('nombre');
         var apellidos_usuarios = button.data('apellidos_usuarios');
@@ -99,7 +99,7 @@ $usuario = $sql->fetch_object();
         // Poner los valores en los campos del modal
         $('#edit-id').val(ID);
         $('#edit-usuario').val(usuario);
-        
+        $('#edit-clave').val(clave);
         $('#edit-nivel_acceso').val(nivel_acceso);
         $('#edit-nombre').val(nombre);
         $('#edit-apellidos_usuarios').val(apellidos_usuarios);
