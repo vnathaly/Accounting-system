@@ -64,7 +64,7 @@ if (empty($_SESSION["ID"])) {
        echo $_SESSION["nombre"]." ".$_SESSION["apellidos_usuarios"];
 			?>
 		</div>
-		<div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+		<div class="collapse navbar-collapse" id="navbarTogglerDemo01"> 
     <div class="navbar-nav ml-auto">
         <div class="offset-md-1 text-center"></div>
 				<li class="nav-item dropdown">
@@ -72,7 +72,7 @@ if (empty($_SESSION["ID"])) {
         Mantenimientos
     </a>
     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-        <a class="dropdown-item" href="#" onclick="cargarMantenimiento('usuarios')">Usuarios</a>
+        <a class="dropdown-item" href="#" onclick="cargarMantenimiento('usuario')">Usuarios</a>
         <a class="dropdown-item" href="#" onclick="cargarMantenimiento('catalogo')">Catálogo de cuenta</a>
         <a class="dropdown-item" href="#" onclick="cargarMantenimiento('tipo_entrada')">Tipo Entrada de Diario</a>
     </div>

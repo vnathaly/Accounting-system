@@ -54,6 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['usuario'])) {
         }
     </style>
 </head>
+<div id="contenido" class="container mt-5 pt-5">
 <body class="cuerpo">
     <div class="container mt-5">
         <div class="row mb-4 d-flex align-items-center">
@@ -101,8 +102,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['usuario'])) {
                                 <td><?php echo htmlspecialchars($row['apellidos_usuarios']); ?></td>
                                 <td><?php echo htmlspecialchars($row['email_usuario']); ?></td>
                                 <td class="col-acciones">
-                                    <a href="#" class="btn btn-warning btn-sm btn-edit-user" data-id="<?php echo $row['ID']; ?>" data-toggle="modal" data-target="#editUserModal"><i class="fa-solid fa-pen-to-square"></i></a>
-                                    <a href="eliminar.php?id=<?php echo $row['ID']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('¿Estás seguro de que deseas eliminar este usuario?');"><i class="fa-solid fa-delete-left"></i></a>
+                                <a href="editar.php?id=<?php echo $row['ID']; ?>" class="btn btn-warning btn-sm btn-edit-user" 
+                                data-id="<?php echo $row['ID']; ?>" 
+                                data-usuario="<?php echo htmlspecialchars($row['usuario']); ?>"
+                                data-clave="<?php echo htmlspecialchars($row['clave']); ?>"
+                                data-nivel_acceso="<?php echo htmlspecialchars($row['nivel_acceso']); ?>"
+                                data-nombre="<?php echo htmlspecialchars($row['nombre']); ?>"
+                                data-apellidos_usuarios="<?php echo htmlspecialchars($row['apellidos_usuarios']); ?>"
+                                data-email_usuario="<?php echo htmlspecialchars($row['email_usuario']); ?>"
+                                data-toggle="modal" 
+                                data-target="#editUserModal">
+                                <i class="fa-solid fa-pen-to-square"></i></a>
+                                <a href="eliminar.php?id=<?php echo $row['ID']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('¿Estás seguro de que deseas eliminar este usuario?');"><i class="fa-solid fa-delete-left"></i></a>
                                 </td>
                             </tr>
                             <?php endwhile; ?>
@@ -163,9 +174,57 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['usuario'])) {
         </div>
     </div>
 
+    <!-- Modal para editar usuario -->
+<div class="modal fade" id="editUserModal" tabindex="-1" role="dialog" aria-labelledby="editUserModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editUserModalLabel">Editar Usuario</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- El formulario de edición se llenará con los datos correspondientes -->
+                <form method="POST" action="editar.php" class="edit-form">
+                    <input type="hidden" name="id" id="edit-id">
+                    <div class="form-group">
+                        <label for="edit-usuario">Usuario:</label>
+                        <input type="text" class="form-control" id="edit-usuario" name="usuario" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="edit-clave">Clave:</label>
+                        <input type="password" class="form-control" id="edit-clave" name="clave" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="edit-nivel_acceso">Nivel de Acceso:</label>
+                        <input type="number" class="form-control" id="edit-nivel_acceso" name="nivel_acceso" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="edit-nombre">Nombre:</label>
+                        <input type="text" class="form-control" id="edit-nombre" name="nombre" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="edit-apellidos_usuarios">Apellidos:</label>
+                        <input type="text" class="form-control" id="edit-apellidos_usuarios" name="apellidos_usuarios" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="edit-email_usuario">Email:</label>
+                        <input type="email" class="form-control" id="edit-email_usuario" name="email_usuario">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Guardar cambios</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
     <!-- Enlace a Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.4.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
+</div>
 </html>
