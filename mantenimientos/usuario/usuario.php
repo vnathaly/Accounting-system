@@ -83,7 +83,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['usuario'])) {
                             <tr>
                                 <th>ID</th>
                                 <th>Usuario</th>
-                                <th>Clave</th>
                                 <th>Nivel de Acceso</th>
                                 <th>Nombre</th>
                                 <th>Apellidos</th>
@@ -96,7 +95,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['usuario'])) {
                             <tr>
                                 <td><?php echo htmlspecialchars($row['ID']); ?></td>
                                 <td><?php echo htmlspecialchars($row['usuario']); ?></td>
-                                <td><?php echo htmlspecialchars($row['clave']); ?></td>
                                 <td><?php echo htmlspecialchars($row['nivel_acceso']); ?></td>
                                 <td><?php echo htmlspecialchars($row['nombre']); ?></td>
                                 <td><?php echo htmlspecialchars($row['apellidos_usuarios']); ?></td>
@@ -105,7 +103,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['usuario'])) {
                                 <a href="editar.php?id=<?php echo $row['ID']; ?>" class="btn btn-warning btn-sm btn-edit-user" 
                                 data-id="<?php echo $row['ID']; ?>" 
                                 data-usuario="<?php echo htmlspecialchars($row['usuario']); ?>"
-                                data-clave="<?php echo htmlspecialchars($row['clave']); ?>"
                                 data-nivel_acceso="<?php echo htmlspecialchars($row['nivel_acceso']); ?>"
                                 data-nombre="<?php echo htmlspecialchars($row['nombre']); ?>"
                                 data-apellidos_usuarios="<?php echo htmlspecialchars($row['apellidos_usuarios']); ?>"
@@ -191,10 +188,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['usuario'])) {
                     <div class="form-group">
                         <label for="edit-usuario">Usuario:</label>
                         <input type="text" class="form-control" id="edit-usuario" name="usuario" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="edit-clave">Clave:</label>
-                        <input type="password" class="form-control" id="edit-clave" name="clave" required>
                     </div>
                     <div class="form-group">
                         <label for="edit-nivel_acceso">Nivel de Acceso:</label>

@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['usuario'])) {
     $stmtInsert->bind_param('ssiiss', $usuario, $clave, $nivel_acceso, $nombre, $apellidos_usuarios, $email_usuario);
 
     if ($stmtInsert->execute()) {
-        echo "<script>alert('Usuario agregado exitosamente.  $_POST['clave'] asas');</script>";
+        echo "<script>alert('Usuario agregado exitosamente";
         echo "<script>window.location.href = 'usuario.php';</script>";
     } else {
         echo "<script>alert('Error al agregar usuario.');</script>";
