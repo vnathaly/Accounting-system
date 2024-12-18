@@ -12,6 +12,7 @@ if (empty($_SESSION["ID"])) {
 	<title>Document</title>
 	<link rel="stylesheet" href="css/estilo.css">	
 	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="style.css">
 </head>
 <body>
 	<div class="bd-example mb-0" style="height: 80vh">
@@ -121,18 +122,6 @@ if (empty($_SESSION["ID"])) {
 	</div>
 	</form>
 	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis aperiam molestias, sint totam dolorum laudantium deleniti obcaecati minima odio provident, optio consectetur quas velit est amet a facere accusantium necessitatibus ea, officiis? Obcaecati harum eligendi incidunt ipsam alias maiores accusamus dicta quia velit molestias, placeat ullam vel corporis explicabo. Porro minus facere quos illum tenetur odit temporibus voluptate a perferendis magni dolorum laudantium molestiae veniam mollitia, illo harum unde, error repellat rem repellendus in, earum ipsum sequi! Explicabo delectus ipsum maxime id vitae, quod necessitatibus voluptates magnam blanditiis et rem enim at voluptatem quisquam inventore est, voluptate aut animi modi consectetur reiciendis molestias ullam repellat sapiente. Vel cupiditate ipsum delectus quod voluptatibus, consectetur omnis numquam ipsa tempora culpa eligendi officiis! Neque explicabo eos fugiat nisi, tenetur modi optio, dolore placeat molestias iste odit, velit rerum aperiam nihil laborum suscipit molestiae. Assumenda cumque, molestiae sed aliquid corrupti praesentium possimus soluta ex delectus est, debitis hic voluptatem natus labore nulla suscipit reprehenderit dignissimos ipsa quae doloribus eum, aperiam totam iure temporibus doloremque. Nesciunt quibusdam aut, vitae ipsam saepe deserunt eius amet alias natus facere asperiores laudantium, cumque temporibus sunt perferendis dolore ducimus velit soluta modi repellat autem eligendi omnis dolorem! Excepturi, iusto.</p>
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 	<script src="js/jquery-3.3.1.slim.min.js"></script>

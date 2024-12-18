@@ -1,0 +1,104 @@
+/* Estilo general para el body */
+body {
+  background-color: #f4f4f4;
+  font-family: 'Arial', sans-serif;
+  color: #333;
+}
+
+/* Estilo de la barra de navegación */
+.navbar {
+  background-color: #343a40; /* Fondo oscuro */
+  color: #fff;
+}
+
+/* Fondo para el nombre de usuario */
+.text-white.bg-success {
+  background-color: #398896; /* Verde ejecutivo */
+  color: white;
+  padding: 5px 20px;
+}
+
+/* Estilo del carousel */
+.carousel-item {
+  height: 80vh;
+}
+
+.carousel-caption {
+  background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro semitransparente */
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.carousel-caption h5 {
+  color: #fff;
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+.carousel-caption p {
+  color: #ddd;
+  font-size: 1.25rem;
+}
+
+/* Estilo de los botones en el navbar */
+.nav-item a {
+  color: #fff;
+  font-weight: 600;
+}
+
+/* Cambiar color al pasar el ratón sobre los enlaces */
+.nav-item a:hover {
+  background-color: #007bff; /* Azul ejecutivo */
+  color: #fff;
+  border-radius: 5px;
+}
+
+/* Jumbotron estilizado */
+.jumbotron {
+  background-color: #343a40; /* Fondo oscuro */
+  color: white;
+  border-radius: 0px;
+}
+
+.jumbotron h1 {
+  font-size: 3.5rem;
+  font-weight: bold;
+}
+
+.jumbotron p {
+  font-size: 1.25rem;
+}
+
+/* Separador horizontal */
+hr.my-4 {
+  border-top: 1px solid #ffffff;
+}
+
+/* Fondo del body del carousel */
+.carousel-inner img {
+  object-fit: cover;
+  height: 80vh;
+}
+
+/* Barra de navegación fija */
+.navbar-fixed-top {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+/* Estilo de los dropdowns */
+.navbar-nav .dropdown-menu {
+  background-color: #343a40;
+  border-radius: 10px;
+}
+
+.navbar-nav .dropdown-item {
+  color: #ddd;
+}
+
+.navbar-nav .dropdown-item:hover {
+  background-color: #007bff;
+  color: #fff;
+}

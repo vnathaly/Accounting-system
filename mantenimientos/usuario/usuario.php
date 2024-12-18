@@ -43,89 +43,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['usuario'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestión de Usuarios</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
     <script src="https://kit.fontawesome.com/cac498eeb2.js" crossorigin="anonymous"></script>
-    <style>
-        body {
-            background: linear-gradient(to right, #2c3e50, #4ca1af);
-            color: #fff;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        .container {
-            background: #ffffff;
-            color: #333;
-            border-radius: 8px;
-            padding: 20px;
-            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
-        }
-
-        h2 {
-            color: #2c3e50;
-            font-weight: bold;
-        }
-
-        .btn-primary {
-            background-color: #4ca1af;
-            border: none;
-        }
-
-        .btn-primary:hover {
-            background-color: #3b8d99;
-        }
-
-        .btn-danger {
-            background-color: #e74c3c;
-            border: none;
-        }
-
-        .btn-warning {
-            background-color: #f39c12;
-            border: none;
-        }
-
-        .table {
-            color: #333;
-            background: #ffffff;
-            border-radius: 5px;
-            overflow: hidden;
-        }
-
-        .table th {
-            background: #2c3e50;
-            color: #fff;
-        }
-
-        .table td {
-            vertical-align: middle;
-        }
-
-        input.form-control {
-            border: 1px solid #4ca1af;
-        }
-
-        .modal-content {
-            color: #333;
-        }
-
-        .modal-header {
-            background: #4ca1af;
-            color: #fff;
-            border-bottom: 2px solid #3b8d99;
-        }
-
-        .modal-title {
-            font-weight: bold;
-        }
-
-        .close {
-            color: #fff;
-        }
-
-        .form-control:focus {
-            border-color: #3b8d99;
-            box-shadow: 0 0 5px rgba(75, 161, 175, 0.8);
-        }
-    </style>
+   
 </head>
 <body>
     <div id="contenido" class="container mt-5 pt-3">
