@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 
     $sqlInsert = "UPDATE usuario SET usuario = ?, nivel_acceso = ?, nombre = ?, apellidos_usuarios = ?, email_usuario = ? WHERE id =".$_GET['id'];
     $stmtInsert = $conexion->prepare($sqlInsert);
-    $stmtInsert->bind_param('siiss', $usuario, $nivel_acceso, $nombre, $apellidos_usuarios, $email_usuario);
+    $stmtInsert->bind_param('sdsss', $usuario, $nivel_acceso, $nombre, $apellidos_usuarios, $email_usuario);
 
     if ($stmtInsert->execute()) {
         echo "<script>alert('Usuario editado exitosamente);</script>";

@@ -14,18 +14,11 @@ if (!empty($_POST["btningresar"])) {
 
             $verify = password_verify($password, $datos->clave);
            var_dump($datos);
-            if ($verify){
-
-                echo "<div class='alert alert-danger'>VALIDO</div> ";
-
-            } else {
-                echo "<div class='alert alert-danger'>NOOOOO VALIDO</div>";
-            }
-
-            // $_SESSION["ID"]=$datos->ID;
-            // $_SESSION["nombre"]=$datos->nombre;
-            // $_SESSION["apellidos_usuarios"]=$datos->apellidos_usuarios;
-            // header("location: ./inicio.php");
+           
+            $_SESSION["ID"]=$datos->ID;
+            $_SESSION["nombre"]=$datos->nombre;
+            $_SESSION["apellidos_usuarios"]=$datos->apellidos_usuarios;
+            header("location: ./inicio.php");
         } else {
             echo "<div class='alert alert-danger'>Acceso Denegado</div>";
         }
