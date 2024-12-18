@@ -13,7 +13,7 @@ if (!empty($_POST["btningresar"])) {
             //verificar password
 
             $verify = password_verify($password, $datos->clave);
-           var_dump($datos);
+             var_dump($datos);
            
             $_SESSION["ID"]=$datos->ID;
             $_SESSION["nombre"]=$datos->nombre;

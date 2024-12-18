@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['usuario'])) {
     $stmtInsert->bind_param('ssdsss', $usuario, $clave, $nivel_acceso, $nombre, $apellidos_usuarios, $email_usuario);
 
     if ($stmtInsert->execute()) {
-        echo "<script>alert('Usuario agregado exitosamente');</script>";
+        echo "<script>alert('usuario agregado exitosamente');</script>";
         echo "<script>window.location.href = 'usuario.php';</script>";
     } else {
         echo "<script>alert('Error al agregar usuario.');</script>";
@@ -41,21 +41,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['usuario'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gestión de Usuarios</title>
+    <title>Gestión de usuarios</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../style.css">
     <script src="https://kit.fontawesome.com/cac498eeb2.js" crossorigin="anonymous"></script>
-   
 </head>
 <body>
     <div id="contenido" class="container mt-5 pt-3">
         <div class="row mb-4 d-flex align-items-center">
-            <!-- Botón para abrir el modal de agregar a la izquierda -->
             <div class="col-md-6">
-                <h2>Gestión de Usuarios</h2>
+                <h2>Gestión de usuarios</h2>
                 <button class="btn btn-primary" data-toggle="modal" data-target="#addUserModal">Agregar <i class="fa-solid fa-plus"></i></button>
             </div>
-            <!-- Formulario de búsqueda a la derecha -->
             <div class="col-md-6 text-right">
                 <form method="GET" action="" class="form-inline justify-content-end">
                     <div class="form-group mr-2">
@@ -66,15 +63,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['usuario'])) {
             </div>
         </div>
 
-        <!-- Tabla de usuarios -->
         <div class="table-responsive">
             <table class="table table-hover">
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Usuario</th>
+                        <th>usuario</th>
                         <th>Nivel de Acceso</th>
-                        <th>Nombre</th>
+                        <th>nombre</th>
                         <th>Apellidos</th>
                         <th>Email</th>
                         <th>Acciones</th>
@@ -85,7 +81,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['usuario'])) {
                     <tr>
                         <td><?php echo htmlspecialchars($row['ID']); ?></td>
                         <td><?php echo htmlspecialchars($row['usuario']); ?></td>
-                        <td><?php echo htmlspecialchars($row['nivel_acceso'] == 1 ? 'Admin' : 'Usuario'); ?></td>
+                        <td><?php echo htmlspecialchars($row['nivel_acceso'] == 1 ? 'Admin' : 'usuario'); ?></td>
                         <td><?php echo htmlspecialchars($row['nombre']); ?></td>
                         <td><?php echo htmlspecialchars($row['apellidos_usuarios']); ?></td>
                         <td><?php echo htmlspecialchars($row['email_usuario']); ?></td>
@@ -104,12 +100,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['usuario'])) {
         </div>
     </div>
 
-    <!-- Modal para agregar usuario -->
     <div class="modal fade" id="addUserModal" tabindex="-1" role="dialog" aria-labelledby="addUserModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="addUserModalLabel">Agregar Usuario</h5>
+                    <h5 class="modal-title" id="addUserModalLabel">Agregar usuario</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -117,11 +112,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['usuario'])) {
                 <div class="modal-body">
                     <form method="POST" action="">
                         <div class="form-group">
-                            <label for="usuario">Usuario</label>
+                            <label for="usuario">usuario</label>
                             <input type="text" class="form-control" name="usuario" required>
                         </div>
                         <div class="form-group">
-                            <label for="clave">Clave</label>
+                            <label for="clave">clave</label>
                             <input type="password" class="form-control" name="clave" required>
                         </div>
                         <div class="form-group">
@@ -129,7 +124,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['usuario'])) {
                             <input type="number" class="form-control" name="nivel_acceso" required>
                         </div>
                         <div class="form-group">
-                            <label for="nombre">Nombre</label>
+                            <label for="nombre">nombre</label>
                             <input type="text" class="form-control" name="nombre" required>
                         </div>
                         <div class="form-group">
