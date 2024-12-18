@@ -12,18 +12,18 @@ if (isset($_GET['id'])) {
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $sql_delete = "DELETE FROM usuario WHERE ID = $idUsuario";
             if ($conexion->query($sql_delete) === TRUE) {
-                header("Location: catalogo.php?msg=Usuario eliminado exitosamente");
+                header("Location: entrada_diario?msg=Usuario eliminado exitosamente");
                 exit();
             } else {
                 echo "<div class='alert alert-danger' role='alert'>Error: " . $conexion->error . "</div>";
             }
         }
     } else {
-        echo "<div class='alert alert-danger' role='alert'>catalogo no encontrado.</div>";
+        echo "<div class='alert alert-danger' role='alert'>Entrada_diario no encontrada.</div>";
         exit();
     }
 } else {
-      echo "<div class='alert alert-danger' role='alert'>ID de catalogo no especificado.</div>";
+      echo "<div class='alert alert-danger' role='alert'>ID de la entrada_diario no fue especificado.</div>";
       exit();
 }
 ?>
@@ -34,12 +34,12 @@ if (isset($_GET['id'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <title>Eliminar catalogo</title>
+    <title>Eliminar entrada_diario</title>
 </head>
 <body>
     <div class="container mt-5">
         <h2>Eliminar Catalogo</h2>
-        <p>¿Estás seguro de que deseas eliminar este usuario?</p>
+        <p>¿Estás seguro de que deseas eliminar esta entrada de diario?</p>
         <form action="eliminar.php?id=<?php echo htmlspecialchars($idUsuario); ?>" method="post">
             <button type="submit" class="btn btn-danger">Eliminar</button>
             <a href="catalogo.php" class="btn btn-secondary">Cancelar</a>

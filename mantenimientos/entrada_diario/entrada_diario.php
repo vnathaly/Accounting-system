@@ -29,9 +29,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['usuario'])) {
 
     if ($stmtInsert->execute()) {
         echo "<script>alert('Usuario agregado exitosamente');</script>";
-        echo "<script>window.location.href = 'usuario.php';</script>";
+        echo "<script>window.location.href = 'entrada_diario.php';</script>";
     } else {
-        echo "<script>alert('Error al agregar usuario.');</script>";
+        echo "<script>alert('Error al agregar entrada_diario.');</script>";
     }
 }
 ?>
@@ -132,7 +132,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['usuario'])) {
         <div class="row mb-4 d-flex align-items-center">
             <!-- Botón para abrir el modal de agregar a la izquierda -->
             <div class="col-md-6">
-                <h2>Gestión de Usuarios</h2>
+                <h2>Gestión de entrada_diario</h2>
                 <button class="btn btn-primary" data-toggle="modal" data-target="#addUserModal">Agregar <i class="fa-solid fa-plus"></i></button>
             </div>
             <!-- Formulario de búsqueda a la derecha -->

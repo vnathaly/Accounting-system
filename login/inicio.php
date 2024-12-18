@@ -25,25 +25,21 @@ if (empty($_SESSION["ID"])) {
 				<div class="carousel-item active" style="height: 80vh">
 					<img src="img/1.jpg" class="d-block w-100" alt="...">
 					<div class="carousel-caption d-none d-md-block">
-						<h5 class="display-4 mb-4 font-weight-bold">BOOTSTRAP 4</h5>
-						<div id="contenido" class="container mt-5 pt-5">
-               <!-- Aquí se cargarán los mantenimientos -->
-					     <p>Aquí van los mantenimientos</p>
-             </div>
+						<h5 class="display-4 mb-4 font-weight-bold">Sistema de ContabilidadS</h5>
 						<p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
 					</div>
 				</div>
 				<div class="carousel-item" style="height: 80vh">
 					<img src="img/1.jpg" class="d-block w-100" alt="...">
 					<div class="carousel-caption d-none d-md-block">
-						<h5 class="display-4 mb-4 font-weight-bold">BOOTSTRAP 4</h5>
+						<h5 class="display-4 mb-4 font-weight-bold">Sistema Contable</h5>
 						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
 					</div>
 				</div>
 				<div class="carousel-item" style="height: 80vh">
 					<img src="img/1.jpg" class="d-block w-100" alt="...">
 					<div class="carousel-caption d-none d-md-block">
-						<h5 class="display-4 mb-4 font-weight-bold">BOOTSTRAP 4</h5>
+						<h5 class="display-4 mb-4 font-weight-bold">Aquí tienes todo lo necesario</h5>
 						<p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
 					</div>
 				</div>
@@ -72,9 +68,9 @@ if (empty($_SESSION["ID"])) {
         Mantenimientos
     </a>
     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-        <a class="dropdown-item" href="#" onclick="cargarMantenimiento('usuario')">Usuarios</a>
-        <a class="dropdown-item" href="#" onclick="cargarMantenimiento('catalogo')">Catálogo de cuenta</a>
-        <a class="dropdown-item" href="#" onclick="cargarMantenimiento('tipo_entrada')">Tipo Entrada de Diario</a>
+        <a class="dropdown-item" href="http://127.0.0.1/Yovanny/mantenimientos/usuario/usuario.php" onclick="cargarMantenimiento('usuario')">Usuarios</a>
+        <a class="dropdown-item" href="http://127.0.0.1/Yovanny/mantenimientos/catalogo/catalogo.php" onclick="cargarMantenimiento('catalogo')">Catálogo de cuenta</a>
+        <a class="dropdown-item" href="http://127.0.0.1/Yovanny/mantenimientos/entrada_diario/entrada_diario.php" onclick="cargarMantenimiento('tipo_entrada')">Tipo Entrada de Diario</a>
     </div>
     </li>
         <li class="nav-item dropdown">

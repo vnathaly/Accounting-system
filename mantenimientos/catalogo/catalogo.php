@@ -29,9 +29,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['usuario'])) {
 
     if ($stmtInsert->execute()) {
         echo "<script>alert('Usuario agregado exitosamente');</script>";
-        echo "<script>window.location.href = 'usuario.php';</script>";
+        echo "<script>window.location.href = 'catalogo.php';</script>";
     } else {
-        echo "<script>alert('Error al agregar usuario.');</script>";
+        echo "<script>alert('Error al agregar al catalogo.');</script>";
     }
 }
 ?>

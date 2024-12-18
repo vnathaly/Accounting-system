@@ -28,9 +28,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 
     if ($stmtInsert->execute()) {
         echo "<script>alert('Usuario editado exitosamente);</script>";
-        echo "<script>window.location.href = 'catalogo.php';</script>";
+        echo "<script>window.location.href = 'entrada_diario.php';</script>";
     } else {
-        echo "<script>alert('Error al editar catalogo.');</script>";
+        echo "<script>alert('Error al editar la entrada_diario.');</script>";
     }
 
 }
