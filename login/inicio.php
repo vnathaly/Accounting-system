@@ -58,7 +58,7 @@ if (empty($_SESSION["ID"])) {
 	<nav class="navbar navbar-dark bg-dark  navbar-expand-md navbar-light bg-light fixed-top">
 		<div class="text-white bg-success p-2">
 			<?php
-       echo $_SESSION["nombre"]." ".$_SESSION["apellidos_usuarios"];
+       echo $_SESSION["nombre"]." ".$_SESSION["apellidos_usuarios"]; //preguntar a Crhistopher
 			?>
 		</div>
 		<div class="collapse navbar-collapse" id="navbarTogglerDemo01"> 
@@ -80,10 +80,8 @@ if (empty($_SESSION["ID"])) {
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                 <a class="dropdown-item" href="#">Catálogo de cuenta</a>
-                <a class="dropdown-item" href="#">Transacciones por Fecha</a>
-                <a class="dropdown-item" href="servicios.html">Transacciones por rango de fechas</a>
-                <a class="dropdown-item" href="#">Transacciones por Documento</a>
-                <a class="dropdown-item" href="#">Transacciones por Tipo de Documento</a>
+                <a class="dropdown-item" href="http://127.0.0.1/Yovanny/consultas/transacciones/transaccion.php">Transacciones</a>
+                <!-- <a class="dropdown-item" href="servicios.html">Transacciones por rango de fechas</a> -->
                 <a class="dropdown-item" href="servicios.html">Balanza General (Activos, pasivo y Capital)</a>
                 <a class="dropdown-item" href="#">Balanza de Comprobación</a>
                 <a class="dropdown-item" href="#">Resumen de Gastos Generales</a>
@@ -95,7 +93,7 @@ if (empty($_SESSION["ID"])) {
                 Procesos
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item" href="#">Cierre de Diario por fechas</a>
+                <a class="dropdown-item" href="http://127.0.0.1/Yovanny/proceso/formulario_cierre.php">Cierre de Diario por fechas</a>
             </div>
         </li>
         <li class="nav-item dropdown">
@@ -103,7 +101,7 @@ if (empty($_SESSION["ID"])) {
                 Movimiento
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item" href="#"> Transacciones</a>
+                <a class="dropdown-item" href="http://127.0.0.1/Yovanny/movimiento/index.html"> Transacciones</a>
             </div>
         </li>
         <a class="nav-item nav-link text-justify ml-3 hover-primary" href="controlador_cerrar_seccion.php">Salir</a>
