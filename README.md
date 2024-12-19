@@ -68,7 +68,7 @@ Antes de iniciar, asegúrate de tener lo siguiente:
      define('DB_HOST', 'localhost');
      define('DB_USER', 'root'); // Usuario predeterminado
      define('DB_PASS', '');     // Contraseña vacía por defecto en XAMPP
-     define('DB_NAME', 'mi_base_datos');
+     define('DB_NAME', 'sistemacontable') //nombre de la base de datos;
      ```
 
 ## Ejecución del Proyecto
