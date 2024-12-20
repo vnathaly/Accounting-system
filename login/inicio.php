@@ -79,13 +79,12 @@ if (empty($_SESSION["ID"])) {
                 Consultas
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item" href="#">Catálogo de cuenta</a>
                 <a class="dropdown-item" href="http://127.0.0.1/Yovanny/consultas/transacciones/transaccion.php">Transacciones</a>
                 <!-- <a class="dropdown-item" href="servicios.html">Transacciones por rango de fechas</a> -->
-                <a class="dropdown-item" href="servicios.html">Balanza General (Activos, pasivo y Capital)</a>
-                <a class="dropdown-item" href="#">Balanza de Comprobación</a>
-                <a class="dropdown-item" href="#">Resumen de Gastos Generales</a>
-                <a class="dropdown-item" href="servicios.html">Estado de Ganancias y Pérdidas</a>
+                <!-- <a class="dropdown-item" href="http://127.0.0.1/Yovanny/consultas/b_general/b_general.php">Balanza General (Activos, pasivo y Capital)</a> -->
+                <a class="dropdown-item" href="http://127.0.0.1/Yovanny/consultas/b_comprobacion/b_comprobacion.php">Balanza de Comprobación</a>
+                <a class="dropdown-item" href="http://127.0.0.1/Yovanny/consultas/gastos_g/gastos_g.php">Resumen de Gastos Generales</a>
+                <!-- <a class="dropdown-item" href="http://127.0.0.1/Yovanny/ganancias_perdidas/ganancias_perdidas.php">Estado de Ganancias y Pérdidas</a> -->
             </div>
         </li>
 				<li class="nav-item dropdown">
