@@ -79,7 +79,9 @@ $usuario = $sql->fetch_object();
                         <input type="email" class="form-control" id="edit-email_usuario" name="email_usuario" value=<?php echo $usuario->email_usuario?>>
                     </div>
                     <button type="submit" class="btn btn-primary">Guardar cambios</button>
+                    
                 </form>
+                
             </div>
         </div>
     </div>

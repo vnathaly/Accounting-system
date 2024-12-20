@@ -2,20 +2,35 @@
 session_start();
 if (empty($_SESSION["ID"])) {
     header("location: login.php");
+    exit();
+}
+
+include_once 'conexion.php'; 
+
+$nivel_acceso = 0; 
+if (isset($_SESSION["ID"])) {
+    $id_usuario = $_SESSION["ID"];
+    $query = "SELECT nivel_acceso FROM usuario WHERE ID = ?";
+    if ($stmt = $conexion->prepare($query)) {
+        $stmt->bind_param("i", $id_usuario);
+        $stmt->execute();
+        $stmt->bind_result($nivel_acceso);
+        $stmt->fetch();
+        $stmt->close();
+    }
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>Document</title>
-	<link rel="stylesheet" href="css/estilo.css">	
-	<link rel="stylesheet" href="css/bootstrap.css">
-	<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/estilo.css">    
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-	<div class="bd-example mb-0" style="height: 80vh">
+<div class="bd-example mb-0" style="height: 80vh">
 		<div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
 			<ol class="carousel-indicators">
 				<li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
@@ -55,59 +70,52 @@ if (empty($_SESSION["ID"])) {
 			</a>
 		</div>
 	</div>
-	<nav class="navbar navbar-dark bg-dark  navbar-expand-md navbar-light bg-light fixed-top">
-		<div class="text-white bg-success p-2">
-			<?php
-       echo $_SESSION["nombre"]." ".$_SESSION["apellidos_usuarios"]; //preguntar a Crhistopher
-			?>
-		</div>
-		<div class="collapse navbar-collapse" id="navbarTogglerDemo01"> 
-    <div class="navbar-nav ml-auto">
-        <div class="offset-md-1 text-center"></div>
-				<li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle text-justify ml-3" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Mantenimientos
-    </a>
-    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-        <a class="dropdown-item" href="http://127.0.0.1/Yovanny/mantenimientos/usuario/usuario.php" onclick="cargarMantenimiento('usuario')">Usuarios</a>
-        <a class="dropdown-item" href="http://127.0.0.1/Yovanny/mantenimientos/catalogo/catalogo.php" onclick="cargarMantenimiento('catalogo')">Catálogo de cuenta</a>
-        <!-- <a class="dropdown-item" href="http://127.0.0.1/Yovanny/mantenimientos/entrada_diario/entrada_diario.php" onclick="cargarMantenimiento('tipo_entrada')">Tipo Entrada de Diario</a> -->
-    </div>
-    </li>
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle text-justify ml-3" href="" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Consultas
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item" href="http://127.0.0.1/Yovanny/consultas/transacciones/transaccion.php">Transacciones</a>
-                <!-- <a class="dropdown-item" href="servicios.html">Transacciones por rango de fechas</a> -->
-                <a class="dropdown-item" href="http://127.0.0.1/Yovanny/consultas/b_general/b_general.php">Balanza General (Activos, pasivo y Capital)</a>
-                <a class="dropdown-item" href="http://127.0.0.1/Yovanny/consultas/b_comprobacion/b_comprobacion.php">Balanza de Comprobación</a>
-                <a class="dropdown-item" href="http://127.0.0.1/Yovanny/consultas/gastos_g/gastos_g.php">Resumen de Gastos Generales</a>
-                <a class="dropdown-item" href="http://127.0.0.1/Yovanny/consultas/ganancias_perdidas/ganancias_perdidas.php">Estado de Ganancias y Pérdidas</a>
+    <nav class="navbar navbar-dark bg-dark navbar-expand-md navbar-light bg-light fixed-top">
+        <div class="text-white bg-success p-2">
+            <?php
+                echo $_SESSION["nombre"] . " " . $_SESSION["apellidos_usuarios"];
+            ?>
+        </div>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo01"> 
+            <div class="navbar-nav ml-auto">
+                <div class="offset-md-1 text-center"></div>
+                <?php if ($nivel_acceso == 1): ?>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-justify ml-3" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Mantenimientos
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="mantenimientos/usuario/usuario.php">Usuarios</a>
+                            <a class="dropdown-item" href="mantenimientos/catalogo/catalogo.php">Catálogo de cuenta</a>
+                            <a class="dropdown-item" href="mantenimientos/tipo_diario/tipo_diario.php">Tipo Entrada de Diario</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-justify ml-3" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Procesos
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="proceso/formulario_cierre.php">Cierre de Diario por fechas</a>
+                        </div>
+                    </li>
+                <?php endif; ?>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-justify ml-3" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Consultas
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="consultas/transacciones/transaccion.php">Transacciones</a>
+                        <a class="dropdown-item" href="consultas/b_general/b_general.php">Balanza General</a>
+                        <a class="dropdown-item" href="consultas/b_comprobacion/b_comprobacion.php">Balanza de Comprobación</a>
+                        <a class="dropdown-item" href="consultas/gastos_g/gastos_g.php">Resumen de Gastos Generales</a>
+                        <a class="dropdown-item" href="consultas/ganancias_perdidas/ganancias_perdidas.php">Estado de Ganancias y Pérdidas</a>
+                    </div>
+                </li>
+                <a class="nav-item nav-link text-justify ml-3 hover-primary" href="controlador_cerrar_seccion.php">Salir</a>
             </div>
-        </li>
-				<li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle text-justify ml-3" href="" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Procesos
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item" href="http://127.0.0.1/Yovanny/proceso/formulario_cierre.php">Cierre de Diario por fechas</a>
-            </div>
-        </li>
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle text-justify ml-3" href="" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Movimiento
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item" href="http://127.0.0.1/Yovanny/movimiento/index.html"> Transacciones</a>
-            </div>
-        </li>
-        <a class="nav-item nav-link text-justify ml-3 hover-primary" href="controlador_cerrar_seccion.php">Salir</a>
-    </div>
-		</div>
-	</nav>	
-	<div class="">
+        </div>
+    </nav>
+		<div class="">
 		<div class="jumbotron bg-dark text-light rounded-0">
 			<h1 class="display-4">Hello, world!</h1>
 			<p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
@@ -120,10 +128,8 @@ if (empty($_SESSION["ID"])) {
 	</form>
 	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis aperiam molestias, sint totam dolorum laudantium deleniti obcaecati minima odio provident, optio consectetur quas velit est amet a facere accusantium necessitatibus ea, officiis? Obcaecati harum eligendi incidunt ipsam alias maiores accusamus dicta quia velit molestias, placeat ullam vel corporis explicabo. Porro minus facere quos illum tenetur odit temporibus voluptate a perferendis magni dolorum laudantium molestiae veniam mollitia, illo harum unde, error repellat rem repellendus in, earum ipsum sequi! Explicabo delectus ipsum maxime id vitae, quod necessitatibus voluptates magnam blanditiis et rem enim at voluptatem quisquam inventore est, voluptate aut animi modi consectetur reiciendis molestias ullam repellat sapiente. Vel cupiditate ipsum delectus quod voluptatibus, consectetur omnis numquam ipsa tempora culpa eligendi officiis! Neque explicabo eos fugiat nisi, tenetur modi optio, dolore placeat molestias iste odit, velit rerum aperiam nihil laborum suscipit molestiae. Assumenda cumque, molestiae sed aliquid corrupti praesentium possimus soluta ex delectus est, debitis hic voluptatem natus labore nulla suscipit reprehenderit dignissimos ipsa quae doloribus eum, aperiam totam iure temporibus doloremque. Nesciunt quibusdam aut, vitae ipsam saepe deserunt eius amet alias natus facere asperiores laudantium, cumque temporibus sunt perferendis dolore ducimus velit soluta modi repellat autem eligendi omnis dolorem! Excepturi, iusto.</p>
 
-
-	<script src="js/jquery-3.3.1.slim.min.js"></script>
-	<script src="js/popper.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery-3.3.1.slim.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
 </body>
-
 </html>

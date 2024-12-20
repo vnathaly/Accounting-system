@@ -74,6 +74,9 @@ $total_credito = 0;
     <div class="total-final">
         <strong>Balance Final:</strong> $<?php echo number_format($total_debito - $total_credito, 2); ?>
     </div>
+    <form action="http://127.0.0.1/Yovanny/login/inicio.php" method="get">
+                      <button type="submit" class="btn-salir">Salir</button>
+                    </form>
 </div>
 
 <!-- Bootstrap JS -->

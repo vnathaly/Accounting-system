@@ -19,6 +19,9 @@
 
             <button type="submit" class="btn-primary">Ejecutar Cierre</button>
         </form>
+        <form action="http://127.0.0.1/Yovanny/login/inicio.php" method="get">
+                      <button type="submit" class="btn-salir">Salir</button>
+                    </form>
     </div>
 </body>
 </html>

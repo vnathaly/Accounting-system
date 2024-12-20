@@ -78,3 +78,18 @@ input.form-control {
   border-color: #3b8d99;
   box-shadow: 0 0 5px rgba(75, 161, 175, 0.8);
 }
+
+/* Estilo opcional para el botón */
+.btn-salir {
+  background-color: #4CAF50; /* Verde */
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
+.btn-salir:hover {
+  background-color: #3575c9; /* Verde más oscuro al pasar el ratón */
+}

@@ -110,6 +110,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['nro_cta'])) {
                     <?php endwhile; ?>
                 </tbody>
             </table>
+            
+        <form action="http://127.0.0.1/Yovanny/login/inicio.php" method="get">
+                      <button type="submit" class="btn-salir">Salir</button>
+                    </form>
         </div>
     </div>
 

@@ -86,6 +86,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['descripcion'])) {
                     <?php endwhile; ?>
                 </tbody>
             </table>
+            
+        <form action="http://127.0.0.1/Yovanny/login/inicio.php" method="get">
+                      <button type="submit" class="btn-salir">Salir</button>
+                    </form>
         </div>
     </div>
 
@@ -110,6 +114,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['descripcion'])) {
                 </div>
             </div>
         </div>
+        <form action="http://127.0.0.1/Yovanny/login/inicio.php" method="get">
+                      <button type="submit" class="btn-salir">Salir</button>
+                    </form>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
